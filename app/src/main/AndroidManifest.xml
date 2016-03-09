@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.suelengc.bookplan">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name="com.orm.SugarApp"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_book_plan"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="DATABASE"
+            android:value="book_planner.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="com.suelengc.bookplan" />
+
+        <activity
+            android:name=".view.mybooks.MyBooksActivity"
+            android:label="My Books">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".view.booksearch.BookSearchActivity"
+            android:label="Book Search" />
+
+        <activity
+            android:name=".view.bookdetails.BookDetailsActivity"
+            android:label="Book Details" />
+
+        <activity
+            android:name=".view.chapter.ChapterActivity"
+            android:label="New Chapter" />
+
+        <activity android:name=".view.chapter.ChapterListActivity"/>
+    </application>
+
+</manifest>

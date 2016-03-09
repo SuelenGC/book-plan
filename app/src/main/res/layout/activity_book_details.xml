@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:id="@+id/book_details_container_title"
+        style="@style/field_container">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Título:"
+            android:textStyle="bold"
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:id="@+id/book_details_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clean Code"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/book_details_container_isbn"
+        android:layout_below="@id/book_details_container_title"
+        style="@style/field_container">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ISBN:"
+            android:textStyle="bold"
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:id="@+id/book_details_isbn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clean Code"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/book_details_container_page_count"
+        android:layout_below="@id/book_details_container_isbn"
+        style="@style/field_container">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pages:"
+            android:textStyle="bold"
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:id="@+id/book_details_page_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clean Code"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/book_details_label_table_of_contents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Table of Contents:"
+        android:textStyle="bold"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/book_details_container_page_count"/>
+
+    <ListView
+        android:id="@+id/book_details_chapter_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@android:color/transparent"
+        android:layout_below="@id/book_details_label_table_of_contents"/>
+
+    <TextView
+        android:id="@+id/book_details_chapter_list_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="No table of contents found for this ISBN, try other!"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:padding="50dp"
+        android:visibility="gone"
+        android:layout_below="@id/book_details_label_table_of_contents"/>
+</RelativeLayout>

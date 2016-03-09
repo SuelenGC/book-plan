@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/add_chapter_dialog_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="1, 2, Appendix A"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/add_chapter_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Chapter name" />
+
+    <EditText
+        android:id="@+id/add_chapter_dialog_first_page_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="27"
+        android:inputType="number"
+        android:singleLine="true" />
+
+    <CheckBox
+        android:id="@+id/add_chapter_dialog_finished"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Concluído"/>
+
+</LinearLayout>

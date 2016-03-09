@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp">
+
+    <ImageView
+        android:id="@+id/my_books_item_thumbnail"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/no_image" />
+
+
+    <TextView
+        android:id="@+id/my_books_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/my_books_item_thumbnail"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/my_books_item_page_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/my_books_item_title"
+        android:layout_toRightOf="@id/my_books_item_thumbnail"
+        android:textColor="#808080"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/my_books_item_completed_infos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignBaseline="@id/my_books_item_page_count"
+        android:text="Comlpeted 2 de 23 (8%)"
+        android:textColor="#808080"
+        android:textSize="12sp"/>
+</RelativeLayout>
