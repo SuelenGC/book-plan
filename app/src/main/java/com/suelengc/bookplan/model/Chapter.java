@@ -38,10 +38,10 @@ public class Chapter extends SugarRecord implements Serializable {
     @Override
     public String toString() {
         if (!this.label.isEmpty()) {
-            return this.label + ". " + this.title + " (first page: " + this.firstPageNumber + ")";
+            return this.label + ". " + this.title;
         }
 
-        return this.title + " (first page: " + this.firstPageNumber + ")";
+        return this.title;
     }
 
     public void setBook(Book book) {
