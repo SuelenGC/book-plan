@@ -22,7 +22,7 @@ public class ChapterListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_chapter);
+        this.setContentView(R.layout.activity_list_chapter);
         this.findViewsById();
 
         intent = getIntent();
@@ -83,7 +83,7 @@ public class ChapterListActivity extends AppCompatActivity {
     }
 
     private void fillScreen() {
-        this.setTitle("Book: " + book.getTitle());
+        this.setTitle("Chapters of " + book.getTitle());
         loadChaptersIntoList();
     }
 

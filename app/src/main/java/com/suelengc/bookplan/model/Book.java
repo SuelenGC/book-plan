@@ -12,16 +12,18 @@ public class Book extends SugarRecord implements Serializable {
     private String subtitle;
     private String author;
     private String isbn_10;
+    private String isbn_13;
     private Long pageCount;
     private String thumbnail;
 
     public Book() {}
 
-    public Book(String title, String subtitle, String author, String isbn_10) {
+    public Book(String title, String subtitle, String author, String isbn_10, String isbn_13) {
         this.title = title;
         this.subtitle = subtitle;
         this.author = author;
         this.isbn_10 = isbn_10;
+        this.isbn_13 = isbn_13;
     }
 
     public Long getPageCount() {
@@ -48,6 +50,13 @@ public class Book extends SugarRecord implements Serializable {
         this.isbn_10 = isbn_10;
     }
 
+    public String getISBN13() {
+        return isbn_13;
+    }
+
+    public void setISBN13(String isbn_13) {
+        this.isbn_13 = isbn_13;
+    }
     public String getTitle() {
         return title;
     }
@@ -63,7 +72,7 @@ public class Book extends SugarRecord implements Serializable {
     public long getFinishedChaptersCount() {
         return Select.from(Chapter.class)
                 .where(Condition.prop("book").eq(this.getId()))
-                .and(Condition.prop("finished_chapter").eq(1))
+                .and(Condition.prop("is_complete").eq(1))
                 .count();
     }
 

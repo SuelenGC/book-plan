@@ -2,34 +2,78 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="10dp"
-    android:paddingTop="10dp">
+    android:padding="10dp">
 
-    <ImageView
-        android:id="@+id/chapter_item_finished"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/ic_ok"
-        android:visibility="gone"/>
+    <!--<ImageView-->
+        <!--android:id="@+id/chapter_item_finished"-->
+        <!--android:layout_width="15dp"-->
+        <!--android:layout_height="15dp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:src="@drawable/ic_ok"-->
+        <!--android:visibility="gone"/>-->
 
     <TextView
         android:id="@+id/chapter_item_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/chapter_item_finished"
         android:layout_marginRight="5dp"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:text="jhkjds ksjdfkjhf jskhdfkjdhf kfshdkjhf dshfjkdshf kdshfkdjshf ksdfhjjkfh kjdshfjkdshfjk dshf "/>
+        android:textSize="16sp"/>
 
     <TextView
-        android:id="@+id/chapter_item_date_to_finish"
+        android:id="@+id/chapter_item_start_page_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/chapter_item_title"
-        android:textColor="#808080"
-        android:visibility="gone"/>
+        android:layout_marginTop="5dp"
+        android:text="Start page: "
+        android:textSize="12sp"
+        android:textColor="#0877AD"/>
+
+    <TextView
+        android:id="@+id/chapter_item_start_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chapter_item_title"
+        android:layout_toRightOf="@id/chapter_item_start_page_label"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:textSize="12sp"
+        android:text="not defined"
+        android:textColor="#808080"/>
+
+    <TextView
+        android:id="@+id/chapter_item_deadline_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/chapter_item_start_page"
+        android:layout_below="@id/chapter_item_title"
+        android:layout_marginTop="5dp"
+        android:text="Deadline: "
+        android:textSize="12sp"
+        android:textColor="#0877AD"/>
+
+    <TextView
+        android:id="@+id/chapter_item_deadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chapter_item_title"
+        android:layout_toRightOf="@id/chapter_item_deadline_label"
+        android:layout_marginTop="5dp"
+        android:textSize="12sp"
+        android:textColor="#808080"/>
+
+    <TextView
+        android:id="@+id/chapter_item_is_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chapter_item_title"
+        android:layout_alignBaseline="@id/chapter_item_deadline"
+        android:layout_alignParentRight="true"
+        android:textColor="#51b53f"
+        android:text="Completed"
+        android:textSize="12sp"
+        android:visibility="invisible"/>
 
 </RelativeLayout>

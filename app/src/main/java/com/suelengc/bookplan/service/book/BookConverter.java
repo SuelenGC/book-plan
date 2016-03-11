@@ -55,18 +55,19 @@ public class BookConverter {
             pageCount = volumeInfo.getLong("pageCount");
         }
 
-        String isbn = getISBNFromVolumeInfo(volumeInfo);
+        String isbn10 = getISBN10FromVolumeInfo(volumeInfo);
+        String isbn13 = getISBN13FromVolumeInfo(volumeInfo);
         String thumbnail = getThumbNailFromVolumeInfo(volumeInfo);
 
-        Book book = new Book(bookTitle, bookSubtitle, author, isbn);
+        Book book = new Book(bookTitle, bookSubtitle, author, isbn10, isbn13);
         book.setPageCount(pageCount);
         book.setThumbnail(thumbnail);
-        book.setISBN10(isbn);
+        book.setISBN10(isbn13);
 
         return book;
     }
 
-    private String getISBNFromVolumeInfo(JSONObject volumeInfo) throws JSONException {
+    private String getISBN10FromVolumeInfo(JSONObject volumeInfo) throws JSONException {
         if (volumeInfo.has("industryIdentifiers")) {
             JSONArray industryIdentifiers = volumeInfo.getJSONArray("industryIdentifiers");
 
@@ -74,6 +75,22 @@ public class BookConverter {
                 JSONObject industryIdentifier = industryIdentifiers.getJSONObject(i);
 
                 if (industryIdentifier.has("type") && industryIdentifier.get("type").equals("ISBN_10")) {
+                    return industryIdentifier.getString("identifier");
+                }
+            }
+        }
+
+        return "";
+    }
+
+    private String getISBN13FromVolumeInfo(JSONObject volumeInfo) throws JSONException {
+        if (volumeInfo.has("industryIdentifiers")) {
+            JSONArray industryIdentifiers = volumeInfo.getJSONArray("industryIdentifiers");
+
+            for (int i = 0; i < industryIdentifiers.length(); i++) {
+                JSONObject industryIdentifier = industryIdentifiers.getJSONObject(i);
+
+                if (industryIdentifier.has("type") && industryIdentifier.get("type").equals("ISBN_13")) {
                     return industryIdentifier.getString("identifier");
                 }
             }

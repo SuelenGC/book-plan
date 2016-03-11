@@ -39,7 +39,7 @@ public class ChapterItemLongClickListener implements AdapterView.OnItemLongClick
         Calendar dateSelected = Calendar.getInstance();
         dateSelected.set(year, month, day);
 
-        this.currentChapter.setDateToFinish(dateSelected.getTimeInMillis());
+        this.currentChapter.setDeadline(dateSelected.getTimeInMillis());
         this.currentChapter.save();
         this.chapterListActivity.loadChaptersIntoList();
     }

@@ -7,15 +7,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.suelengc.bookplan.R;
 import com.suelengc.bookplan.model.Book;
 import com.suelengc.bookplan.model.Chapter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
 public class ChapterActivity extends AppCompatActivity {
 
     private EditText label, title, firstPageNumber;
-    private CheckBox finishedChapter;
+    private TextView deadline;
+    private CheckBox isComplete;
     private Intent intent;
     private Book book;
     private Chapter chapter;
@@ -59,8 +67,7 @@ public class ChapterActivity extends AppCompatActivity {
         Long chapterId = (Long) intent.getSerializableExtra("chapter_id");
         this.chapter = Chapter.findById(Chapter.class, chapterId);
         this.book = this.chapter.getBook();
-
-        setTitle("Edit Chapter for " + this.book.getTitle());
+        this.setTitle("Edit Chapter for " + this.book.getTitle());
 
         this.fillScreenWithChapterInfo(this.chapter);
     }
@@ -69,7 +76,8 @@ public class ChapterActivity extends AppCompatActivity {
         this.title.setText(chapter.getTitle());
         this.label.setText(chapter.getLabel());
         this.firstPageNumber.setText(chapter.getFirstPageNumber().toString());
-        this.finishedChapter.setChecked(chapter.isFinished());
+        this.isComplete.setChecked(chapter.isComplete());
+        this.deadline.setText(chapter.getFormattedDeadline());
     }
 
     private void setupForNewChapter() {
@@ -77,15 +85,16 @@ public class ChapterActivity extends AppCompatActivity {
             Long bookId = (Long) this.intent.getSerializableExtra("book_id");
             this.chapter = new Chapter();
             this.book = Book.findById(Book.class, bookId);
-            setTitle("New Chapter for " + this.book.getTitle());
+            this.deadline.setText("");
         }
     }
 
     private void findViewsById() {
-        this.label = (EditText) findViewById(R.id.add_chapter_dialog_label);
-        this.title = (EditText) findViewById(R.id.add_chapter_dialog_title);
-        this.firstPageNumber = (EditText) findViewById(R.id.add_chapter_dialog_first_page_number);
-        this.finishedChapter = (CheckBox) findViewById(R.id.add_chapter_dialog_finished);
+        this.label = (EditText) findViewById(R.id.add_chapter_label);
+        this.title = (EditText) findViewById(R.id.add_chapter_title);
+        this.firstPageNumber = (EditText) findViewById(R.id.add_chapter_first_page_number);
+        this.isComplete = (CheckBox) findViewById(R.id.add_chapter_dialog_finished);
+        this.deadline = (TextView) findViewById(R.id.add_chapter_deadline);
     }
 
     private void saveChapter() {
@@ -110,6 +119,17 @@ public class ChapterActivity extends AppCompatActivity {
         this.chapter.setTitle(newTitle);
         this.chapter.setLabel(newLabel);
         this.chapter.setFirstPageNumber(newFirstPageNumber);
-        this.chapter.setFinishedChapter(this.finishedChapter.isChecked());
+        this.chapter.setComplete(this.isComplete.isChecked());
+
+        if (!this.deadline.getText().toString().isEmpty()) {
+            try {
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy");
+                Date deadlineDate = formatter.parse(this.deadline.getText().toString());
+                this.chapter.setDeadline(deadlineDate.getTime());
+            } catch (ParseException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Opps, we can't save deadline, try again.", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 }

@@ -12,10 +12,10 @@ public class Chapter extends SugarRecord implements Serializable {
     private String label;
     private String title;
     private Book book;
-    private boolean finishedChapter;
+    private boolean isComplete;
 
     public Chapter() {}
-    private long dateToFinish;
+    private long deadline;
 
     public Chapter(String title, String label, Integer firstPageNumber) {
         this.title = title;
@@ -48,32 +48,35 @@ public class Chapter extends SugarRecord implements Serializable {
         this.book = book;
     }
 
-    public void setDateToFinish(long dateToFinish) {
-        this.dateToFinish = dateToFinish;
+    public void setDeadline(long deadline) {
+        this.deadline = deadline;
     }
 
-    public String getFormattedDateToFinish() {
-        Calendar dateToFinish = Calendar.getInstance();
-        dateToFinish.setTimeInMillis(this.dateToFinish);
+    public String getFormattedDeadline() {
+        if (this.hasDeadline()) {
+            Calendar dateToFinish = Calendar.getInstance();
+            dateToFinish.setTimeInMillis(this.deadline);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        return formatter.format(dateToFinish.getTime());
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            return formatter.format(dateToFinish.getTime());
+        }
+        return "";
     }
 
-    public boolean hasDateToFinish() {
-        if (this.dateToFinish > 0) {
+    public boolean hasDeadline() {
+        if (this.deadline > 0) {
             return true;
         }
 
         return false;
     }
 
-    public void setFinishedChapter(boolean finishedChapter) {
-        this.finishedChapter = finishedChapter;
+    public void setComplete(boolean complete) {
+        this.isComplete = complete;
     }
 
-    public boolean isFinished() {
-        return finishedChapter;
+    public boolean isComplete() {
+        return isComplete;
     }
 
     public String getLabel() {
@@ -81,7 +84,7 @@ public class Chapter extends SugarRecord implements Serializable {
     }
 
     public Integer getFirstPageNumber() {
-        return firstPageNumber;
+        return this.firstPageNumber;
     }
 
     public void setLabel(String label) {

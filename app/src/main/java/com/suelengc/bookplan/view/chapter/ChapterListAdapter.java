@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.suelengc.bookplan.R;
@@ -46,34 +45,39 @@ public class ChapterListAdapter extends BaseAdapter {
         ChapterItemViewHolder holder = new ChapterItemViewHolder(convertView);
 
         holder.title.setText(chapter.toString());
+        holder.startPage.setText(chapter.getFirstPageNumber().toString());
 
-        if (chapter.isFinished()) {
-            holder.finished.setVisibility(View.VISIBLE);
+        if (chapter.isComplete()) {
+            holder.isComplete.setVisibility(View.VISIBLE);
         }
 
-        if (chapter.hasDateToFinish()) {
-            holder.dateToFinish.setVisibility(View.VISIBLE);
-            holder.dateToFinish.setText("Expected to finish at " + chapter.getFormattedDateToFinish());
+        if (chapter.hasDeadline()) {
+            holder.deadline.setVisibility(View.VISIBLE);
+            holder.deadline.setText(chapter.getFormattedDeadline());
         }
 
         return convertView;
     }
 
     private View loadItemLayout(ViewGroup viewGroup) {
-        View convertView;LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View convertView;
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
         convertView = inflater.inflate(R.layout.activity_list_chapter_result_item, viewGroup, false);
         return convertView;
     }
 
     class ChapterItemViewHolder {
         TextView title;
-        TextView dateToFinish;
-        ImageView finished;
+        TextView deadline;
+        TextView isComplete;
+        TextView startPage;
 
         ChapterItemViewHolder(View view) {
             this.title = (TextView) view.findViewById(R.id.chapter_item_title);
-            this.dateToFinish = (TextView) view.findViewById(R.id.chapter_item_date_to_finish);
-            this.finished = (ImageView) view.findViewById(R.id.chapter_item_finished);
+            this.deadline = (TextView) view.findViewById(R.id.chapter_item_deadline);
+            this.isComplete = (TextView) view.findViewById(R.id.chapter_item_is_complete);
+            this.startPage = (TextView) view.findViewById(R.id.chapter_item_start_page);
         }
     }
 }

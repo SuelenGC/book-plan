@@ -52,7 +52,7 @@ public class MyBooksListAdapter extends BaseAdapter {
 
         this.holder.completedInfos.setText(this.getCompletedInfosText());
         this.holder.title.setText(book.toString());
-        this.holder.pageCount.setText(book.getPageCount().toString() + " pages");
+        this.holder.pageCount.setText(book.getPageCount().toString());
 
         if (!book.getThumbnail().isEmpty()) {
             Picasso.with(context).load(book.getThumbnail()).into(holder.thumbnail);
@@ -75,8 +75,7 @@ public class MyBooksListAdapter extends BaseAdapter {
     private String getCompletedInfosText() {
         if (book.hasChapters()) {
             long completedPercentage = (this.book.getFinishedChaptersCount() * 100) / this.book.getChaptersCount();
-            return "completed " +
-                    this.book.getFinishedChaptersCount() +
+            return this.book.getFinishedChaptersCount() +
                     " of " + this.book.getChaptersCount() +
                     " (" + completedPercentage + "%)";
         }

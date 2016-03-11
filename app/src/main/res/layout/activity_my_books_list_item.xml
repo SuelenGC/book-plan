@@ -12,22 +12,33 @@
         android:layout_marginRight="5dp"
         android:src="@drawable/no_image" />
 
-
     <TextView
         android:id="@+id/my_books_item_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/my_books_item_thumbnail"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:text="Teste de livro"/>
 
     <TextView
-        android:id="@+id/my_books_item_page_count"
-        android:layout_width="match_parent"
+        android:id="@+id/my_books_item_page_count_label"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/my_books_item_title"
         android:layout_toRightOf="@id/my_books_item_thumbnail"
+        android:textColor="#0877AD"
+        android:textSize="12sp"
+        android:text="Pages: "/>
+
+    <TextView
+        android:id="@+id/my_books_item_page_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/my_books_item_title"
+        android:layout_toRightOf="@id/my_books_item_page_count_label"
         android:textColor="#808080"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:text="345"/>
 
     <TextView
         android:id="@+id/my_books_item_completed_infos"
@@ -35,7 +46,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignBaseline="@id/my_books_item_page_count"
-        android:text="Comlpeted 2 de 23 (8%)"
+        android:text="80%"
         android:textColor="#808080"
         android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/my_books_item_completed_infos_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/my_books_item_completed_infos"
+        android:layout_alignBaseline="@id/my_books_item_page_count"
+        android:text="Complete: "
+        android:textColor="#51b53f"
+        android:textSize="12sp"/>
+
 </RelativeLayout>

@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="DATABASE"
-            android:value="book_planner.db" />
+            android:value="book_planner.db3" />
         <meta-data
             android:name="VERSION"
             android:value="1" />

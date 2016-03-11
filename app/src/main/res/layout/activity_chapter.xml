@@ -4,31 +4,79 @@
     android:orientation="vertical"
     android:padding="10dp">
 
-    <EditText
-        android:id="@+id/add_chapter_dialog_label"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="1, 2, Appendix A"
-        android:singleLine="true" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/add_chapter_dialog_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Chapter name" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chapter index: "/>
 
-    <EditText
-        android:id="@+id/add_chapter_dialog_first_page_number"
+        <EditText
+            android:id="@+id/add_chapter_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chapter Name: "/>
+
+        <EditText
+            android:id="@+id/add_chapter_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chapter' start page: "/>
+
+        <EditText
+            android:id="@+id/add_chapter_first_page_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="27"
-        android:inputType="number"
-        android:singleLine="true" />
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chapter' deadline: "/>
+
+        <EditText
+            android:id="@+id/add_chapter_deadline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:singleLine="true"
+            android:hint="dd/mm/yyyy"/>
+
+    </LinearLayout>
 
     <CheckBox
         android:id="@+id/add_chapter_dialog_finished"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Concluído"/>
+        android:layout_marginTop="5dp"
+        android:text="Completely read"/>
 
 </LinearLayout>

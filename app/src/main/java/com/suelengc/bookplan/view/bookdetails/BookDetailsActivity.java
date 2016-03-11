@@ -55,6 +55,7 @@ public class BookDetailsActivity extends AppCompatActivity implements ChapterTas
                 }
 
                 finish();
+                finish();
                 return true;
         }
 
